@@ -1,0 +1,16 @@
+<h2>Componente Zapatillas</h2>
+<p>Zapatillas de las mejores marcas </p>
+    <ul>
+        <li *ngFor="let marca of marcas">{{marca}}</li>
+    </ul>
+
+<p>Disponibles: </p>
+<ul>
+    
+    <li *ngFor="let deportiva of zapatillas">
+        {{deportiva.nombre}}-<strong>{{deportiva.precio}}</strong>
+        <span *ngIf="deportiva.precio<=80"
+        [style.background]="deportiva.precio<=80 ? 'green':'transparent' ">
+            OFERTA</span>
+    </li>
+</ul>
