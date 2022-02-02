@@ -1,4 +1,13 @@
 <h2>Página Principal</h2>
-<div *ngIf="identificado">
-    <h3>Estas indentificado en la aplicacion</h3>
+<div *ngIf="identificado;then SiIdentificado else noIdentificado">
 </div>
+
+<ng-template #SiIdentificado>
+    <h3>Estas indentificado en la aplicacion</h3>
+<button (click)="unsetIdentificado()">Borrar identificacion</button>
+</ng-template>
+
+<ng-template #noIdentificado>
+    <p>No estás identificado, presiona aquí:</p>
+    <button (click)="setIdentificado()">Click Aquí</button>
+</ng-template>
