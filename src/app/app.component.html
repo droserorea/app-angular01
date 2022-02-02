@@ -9,14 +9,16 @@
 <body>
   <div [ngStyle]="{'background':config.color,
                     'padding':'20px',
-                    'border': '5px solid red'
+                    'border': '5px solid gray'
                   }">
-    <h1>---{{descripcion}}</h1>
+    <h1>{{descripcion}}</h1>
     <nav>
       <a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>&NonBreakingSpace;
       <a [routerLink]="['/zapatillas']" [routerLinkActive]="['active']">Zapatillas</a>&nbsp;
       <a [routerLink]="['/cursos']" [routerLinkActive]="['active']">Cursos</a>&nbsp;
-      <a [routerLink]="['/videojuego']" [routerLinkActive]="['active']">Videojuego</a>
+      <a [routerLink]="['/videojuego']" [routerLinkActive]="['active']">Videojuego</a>&nbsp;
+      <a [routerLink]="['/externo']" [routerLinkActive]="['active']">Externo</a>
+
       
     </nav>
     <hr/>
