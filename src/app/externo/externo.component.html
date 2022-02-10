@@ -8,9 +8,31 @@
 </head>
 <body>
     <p>externo works!</p>
-    <div *ngIf="user">
-        <h2>{{user.first_name}}</h2>
+    <input type="text" [(ngModel)]="userId" (keyup.enter)="cargaUsuario()"/>
+    <div *ngIf="!user">
+        Cargando...
     </div>
+    <div *ngIf="user">
+        <img src="{{user.avatar}}" width="200"/>
+        <h2>{{user.first_name +'  '+ user.last_name}}</h2>
+    </div>
+
+    <hr/>
+    <h2>Crear Usuario</h2>
+    <form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+        <p>
+            <label for="name">Nombre</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="new_user.name" />
+        </p>
+        <p>
+            <label for="job">Trabajo</label>
+            <input type="text" name="job" #name="ngModel" [(ngModel)]="new_user.job" />
+        </p>
+        <input type="submit" value="Guardar Usuario" [disabled]="!newUser.form.valid"/>
+
+    </form>
+
+
 </body>
 </html>
 
