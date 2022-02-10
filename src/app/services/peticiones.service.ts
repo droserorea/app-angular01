@@ -14,7 +14,15 @@ export class PeticionesService{
         this.url="https://reqres.in/";
     }
 
-    getUser(): Observable<any>{
-        return this._http.get(this.url+'api/users/2');
+    getUser(userId:number): Observable<any>{
+        return this._http.get(this.url+'api/users/'+userId);
+    }
+
+    addUser(user:any):Observable<any>{
+        let params= JSON.stringify(user);
+        let headers= new HttpHeaders().set('Content-Type', 'application/son');
+        
+        return this._http.post(this.url+'api/users', params, {headers: headers});
+
     }
 }

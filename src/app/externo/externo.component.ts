@@ -9,13 +9,25 @@ import { PeticionesService } from "../services/peticiones.service";
 export class ExternoComponent implements OnInit {
 
   public user:any;
+  public userId:number;
+  public new_user:any;
 
   constructor(
-    public _peticionesService: PeticionesService,
-  ) { }
+    private _peticionesService: PeticionesService,
+  ) { 
+    this.userId=1;
+    this.new_user={
+        "name": "",
+        "job": ""
+    }
+  }
 
   ngOnInit() {
-    this._peticionesService.getUser().subscribe(
+    this.cargaUsuario();
+  }
+
+  cargaUsuario(){
+    this._peticionesService.getUser(this.userId).subscribe(
       //(x) => console.log(x)
       resul=>{
         this.user=resul.data;
@@ -24,6 +36,19 @@ export class ExternoComponent implements OnInit {
         console.log(<any> error)
       }
     )
+  }
+
+  onSubmit(form:any){
+    this._peticionesService.addUser(this.new_user).subscribe(
+      response=>{
+        console.log(response);
+        form.reset();
+      },
+      error=>{
+        console.log(<any>error)
+      }
+    )
+
   }
 
 }
